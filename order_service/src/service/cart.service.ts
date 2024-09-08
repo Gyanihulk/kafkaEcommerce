@@ -30,7 +30,6 @@ export const GetCart = async (id: number, repo: CartRepositoryType) => {
   if (!data) {
     throw new NotFoundError("cart not found");
   }
-
   return data;
 };
 

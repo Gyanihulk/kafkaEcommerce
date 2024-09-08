@@ -1,6 +1,6 @@
 import { DB } from "../db/db.connection";
 import { Cart, CartLineItem, cartLineItems, carts } from "../db/schema";
-import { NotFoundError } from "../utils";
+import { logger, NotFoundError } from "../utils";
 import { eq } from "drizzle-orm";
 
 // declare repository type
@@ -42,6 +42,7 @@ const createCart = async (
 };
 
 const findCart = async (id: number): Promise<Cart> => {
+  logger.info(id)
   const cart = await DB.query.carts.findFirst({
     where: (carts, { eq }) => eq(carts.customerId, id),
     with: {

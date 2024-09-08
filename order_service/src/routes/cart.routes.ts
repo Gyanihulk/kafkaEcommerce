@@ -51,6 +51,7 @@ router.post(
 
 router.get("/cart", async (req: Request, res: Response, next: NextFunction) => {
   // comes from our auth user parsed from JWT
+
   const response = await service.GetCart(req.body.customerId, repo);
   return res.status(200).json(response);
 });
